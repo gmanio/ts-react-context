@@ -1,5 +1,10 @@
-import * as React from 'react'
+/**
+ * React Code Splitting
+ *
+ * [ Reference ] : https://reactjs.org/docs/code-splitting.html
+ */
 
+import * as React from 'react'
 import Loadable from "react-loadable";
 
 const Loading = () => <div>Loading...</div>;

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 class Ebook extends React.Component<{}, {}> {
   constructor(props: {}) {
@@ -7,13 +8,23 @@ class Ebook extends React.Component<{}, {}> {
 
   public render() {
     return (
-      <h1>Ebook</h1>
+      <div>
+        <h1>Ebook</h1>
+        <ul>
+          <li>
+            <Link to={`/ebook`}>ebook</Link>
+          </li>
+          <li>
+            <Link to={`/comic`}>comic</Link>
+          </li>
+          <li>
+            <Link to={`/music`}>music</Link>
+          </li>
+        </ul>
+      </div>
+
     )
   }
 }
 
 export default Ebook;
-
-// export default Home = () => (
-//   <h1>working</h1>
-// );

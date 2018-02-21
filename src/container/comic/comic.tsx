@@ -6,19 +6,24 @@ class Comic extends React.Component<{}, {}> {
     super(props);
   }
 
-  public render() {
+  render() {
     return (
       <div>
         <h1>Comic</h1>
-        <Link to={`/home`}>home</Link>
-        <Link to={`/music`}>music</Link>
+        <ul>
+          <li>
+            <Link to={`/ebook`}>ebook</Link>
+          </li>
+          <li>
+            <Link to={`/comic`}>comic</Link>
+          </li>
+          <li>
+            <Link to={`/music`}>music</Link>
+          </li>
+        </ul>
       </div>
     )
   }
 }
 
 export default Comic;
-
-// export default Home = () => (
-//   <h1>working</h1>
-// );
