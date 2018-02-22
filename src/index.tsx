@@ -1,18 +1,26 @@
+import './assets/scss/common.scss';
+
 import * as React from 'react'
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as Routes from './routes';
-import AppContext from './app.context';
+import { AppContext } from './context/app.context';
 
 class App extends React.Component {
-  state: { childMsg: string; grandChildMsg: string; greatGrandChildMsg: string };
+  state: any;
+  arr = ['apple', 'banana', 'cherry', 'Dragon fruit', 'Egg Fruit', 'Fig'];
+  private index: number;
 
   constructor(props) {
     super(props);
-    this.state = { childMsg: "childMsg", grandChildMsg: "grandChildMsg", greatGrandChildMsg: "greatGrandChildMsg" };
+    this.index = 0;
+    this.state = {
+      appTitle: "start",
+      update: (state) => this.setState(state)
+    };
   }
 
-  render() {
+  public render() {
     return (
       <AppContext.Provider value={this.state}>
         <Router>
@@ -30,5 +38,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App/>, document.getElementById("root"));
-
-//https://api3.musicmates.co.kr/v2/channel/livechart

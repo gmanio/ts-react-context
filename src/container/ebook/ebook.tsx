@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-class Ebook extends React.Component<{}, {}> {
+class Ebook extends React.Component {
   constructor(props: {}) {
     super(props);
   }

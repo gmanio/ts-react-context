@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-class Comic extends React.Component<{}, {}> {
+class Comic extends React.Component {
   constructor(props: {}) {
     super(props);
   }

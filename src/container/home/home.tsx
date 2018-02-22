@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import AppContext from '../../app.context';
+import { AppContext } from '../../context/app.context';
 
-class Home extends React.Component<{}, {}> {
-  constructor(props: {}) {
+class Home extends React.Component {
+  constructor(props) {
     super(props);
   }
 
@@ -20,7 +20,21 @@ class Home extends React.Component<{}, {}> {
 
   renderWithContext = (message) => {
     return (
-      <div>{message.childMsg}</div>
+      <div>
+        {message.appTitle}
+        <h1>Home</h1>
+        <ul>
+          <li>
+            <Link to={`/ebook`}>ebook</Link>
+          </li>
+          <li>
+            <Link to={`/comic`}>comic</Link>
+          </li>
+          <li>
+            <Link to={`/music`}>music</Link>
+          </li>
+        </ul>
+      </div>
     )
   }
 }
