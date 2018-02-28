@@ -3,21 +3,22 @@ import './assets/scss/common.scss';
 import * as React from 'react'
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import * as Routes from './routes';
 import { AppContext } from './context/app.context';
+import * as Routes from './routes';
 
 class App extends React.Component {
-  state: any;
-  arr = ['apple', 'banana', 'cherry', 'Dragon fruit', 'Egg Fruit', 'Fig'];
-  private index: number;
+  state: { appTitle, updateContext };
 
   constructor(props) {
     super(props);
-    this.index = 0;
     this.state = {
-      appTitle: "start",
-      update: (state) => this.setState(state)
+      appTitle: "context API",
+      updateContext: state => this.setState(state)
     };
+  }
+
+  componentDidUpdate() {
+    document.title = this.state.appTitle;
   }
 
   public render() {
@@ -30,6 +31,7 @@ class App extends React.Component {
             <Route exact path="/comic" component={Routes.Comic}/>
             <Route exact path="/ebook" component={Routes.Ebook}/>
             <Route exact path="/music" component={Routes.Music}/>
+            <Route component={Routes.NotFound}/>
           </Switch>
         </Router>
       </AppContext.Provider>

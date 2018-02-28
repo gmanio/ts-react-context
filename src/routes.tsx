@@ -8,25 +8,26 @@ import * as React from 'react'
 import Loadable from "react-loadable";
 
 const Loading = () => <div>Loading...</div>;
+const NotFound = () => <div>404: Not Found</div>;
 
 const Home = Loadable({
-  loader: () => import('./container/home/home'),
+  loader: () => import('./containers/home/home'),
   loading: Loading
 });
 
 const Comic = Loadable({
-  loader: () => import('./container/comic/comic'),
+  loader: () => import('./containers/comic/comic'),
   loading: Loading
 });
 
 const Ebook = Loadable({
-  loader: () => import('./container/ebook/ebook'),
+  loader: () => import('./containers/ebook/ebook'),
   loading: Loading
 });
 
 const Music = Loadable({
-  loader: () => import('./container/music/music'),
+  loader: () => import('./containers/music/music'),
   loading: Loading
 });
 
-export { Home, Comic, Ebook, Music };
+export { Home, Comic, Ebook, Music, NotFound };

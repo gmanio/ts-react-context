@@ -6,7 +6,7 @@ class Comic extends React.Component {
     super(props);
   }
 
-  render() {
+  public render() {
     return (
       <div>
         <h1>Comic</h1>

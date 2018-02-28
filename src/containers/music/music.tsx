@@ -15,14 +15,14 @@ class Music extends React.Component<{}, {}> {
   }
 
   public componentWillUnmount() {
-    if ( this.interval$ ) {
-      this.interval$.unsubscribe();
-    }
+    // if ( this.interval$ ) {
+    //   this.interval$.unsubscribe();
+    // }
   }
 
   public updateContext(context) {
     this.interval$ = interval(1000).subscribe(() => {
-      context.update({ appTitle: this.arr[this.index++ % this.arr.length] });
+      context.updateContext({ appTitle: this.arr[this.index++ % this.arr.length] });
     });
   }
 
@@ -36,8 +36,7 @@ class Music extends React.Component<{}, {}> {
 
   public renderWithContext = (context) => (
     <div>
-      <button onClick={() => this.updateContext(context)}>start
-      </button>
+      <button onClick={() => this.updateContext(context)}>start</button>
       {context.appTitle}
       <h1>Music</h1>
       <ul>
