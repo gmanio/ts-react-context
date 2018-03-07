@@ -3,37 +3,42 @@ import './assets/scss/common.scss';
 import * as React from 'react'
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { AppContext } from './context/app.context';
-import * as Routes from './routes';
+import { AppContext, EbookContext } from './context/app.context';
+import { LazyRoute, NotFound } from './routes';
 
 class App extends React.Component {
-  state: { appTitle, updateContext };
+  state: any;
 
   constructor(props) {
     super(props);
+    const { setState } = this;
+
     this.state = {
       appTitle: "context API",
-      updateContext: state => this.setState(state)
-    };
+      updateContext: state => setState(state)
+    }
+
   }
 
   componentDidUpdate() {
     document.title = this.state.appTitle;
   }
 
-  public render() {
+  render() {
     return (
       <AppContext.Provider value={this.state}>
-        <Router>
-          <Switch>
-            <Route exact path="/" component={Routes.Home}/>
-            <Route exact path="/home" component={Routes.Home}/>
-            <Route exact path="/comic" component={Routes.Comic}/>
-            <Route exact path="/ebook" component={Routes.Ebook}/>
-            <Route exact path="/music" component={Routes.Music}/>
-            <Route component={Routes.NotFound}/>
-          </Switch>
-        </Router>
+        <EbookContext.Provider value={{ test: 'test' }}>
+          <Router>
+            <Switch>
+              <LazyRoute exact path="/" component={() => import('./containers/home/home')}/>
+              <LazyRoute exact path="/home" component={() => import('./containers/home/home')}/>
+              <LazyRoute exact path="/comic" component={() => import('./containers/comic/comic')}/>
+              <LazyRoute exact path="/ebook" component={() => import('./containers/ebook/ebook')}/>
+              <LazyRoute exact path="/music" component={() => import('./containers/music/music')}/>
+              <Route component={NotFound}></Route>
+            </Switch>
+          </Router>
+        </EbookContext.Provider>
       </AppContext.Provider>
     );
   }

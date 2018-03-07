@@ -6,28 +6,18 @@
 
 import * as React from 'react'
 import Loadable from "react-loadable";
+import { Route } from 'react-router-dom';
 
 const Loading = () => <div>Loading...</div>;
 const NotFound = () => <div>404: Not Found</div>;
 
-const Home = Loadable({
-  loader: () => import('./containers/home/home'),
-  loading: Loading
-});
+const LazyRoute = (props) => {
+  const component = Loadable({
+    loader: props.component,
+    loading: Loading
+  });
 
-const Comic = Loadable({
-  loader: () => import('./containers/comic/comic'),
-  loading: Loading
-});
+  return <Route {...props} component={component}/>;
+}
 
-const Ebook = Loadable({
-  loader: () => import('./containers/ebook/ebook'),
-  loading: Loading
-});
-
-const Music = Loadable({
-  loader: () => import('./containers/music/music'),
-  loading: Loading
-});
-
-export { Home, Comic, Ebook, Music, NotFound };
+export { LazyRoute, NotFound };

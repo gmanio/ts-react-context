@@ -1,5 +1,7 @@
 import * as React from 'react';
 
-export const Loader = (...rest) => <div>
-  {'test'}
-</div>;
+export const Loader = ({ values }) => {
+  return (
+    <div>{values.test}</div>
+  );
+};

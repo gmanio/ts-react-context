@@ -15,9 +15,6 @@ class Music extends React.Component<{}, {}> {
   }
 
   public componentWillUnmount() {
-    // if ( this.interval$ ) {
-    //   this.interval$.unsubscribe();
-    // }
   }
 
   public updateContext(context) {
@@ -37,7 +34,6 @@ class Music extends React.Component<{}, {}> {
   public renderWithContext = (context) => (
     <div>
       <button onClick={() => this.updateContext(context)}>start</button>
-      {context.appTitle}
       <h1>Music</h1>
       <ul>
         <li>

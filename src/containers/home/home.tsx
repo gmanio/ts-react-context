@@ -1,23 +1,25 @@
-///<reference path="../../../node_modules/@types/react/index.d.ts"/>
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import * as axios from 'axios';
+import axios from 'axios';
 import { AppContext } from '../../context/app.context';
+import { Loader } from '../../components/loader/loader';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import * as Routes from './../../routes';
 
 class Home extends React.Component {
-  state: { screenshot: any[] }
+  state: { data: any[] }
 
   constructor(props) {
     super(props);
-    this.state = { screenshot: [] }
+    this.state = { data: [] }
   }
 
   public componentDidMount() {
-    // axios.get(`http://localhost:1100/puppeteer/get`)
-    //   .then(res => {
-    //     const screenshot = res.data;
-    //     this.setState({ screenshot: screenshot });
-    //   })
+    axios.get('http://server.gman.io/employees')
+      .then(res => {
+        const data = res.data;
+        this.setState({ data: data });
+      })
   }
 
   public render() {
@@ -28,10 +30,10 @@ class Home extends React.Component {
     )
   }
 
-  public renderWithContext = (message) => {
+  public renderWithContext = (context) => {
     return (
       <div>
-        {message.appTitle}
+        {context.appTitle}
         <h1>Home</h1>
         <ul>
           <li>
@@ -44,15 +46,14 @@ class Home extends React.Component {
             <Link to={`/music`}>music</Link>
           </li>
         </ul>
-        {this.state.screenshot.map(({ url, screenshot }) => {
-            return (
-              <div key={url}>
-                {url}
-                <img src={'data:image/png;base64,' + screenshot} alt="" width="100" height="100"/>
-              </div>
-            );
-          }
-        )}
+        {/*{*/}
+          {/*this.state.data.map((employees) =>*/}
+            {/*<div>*/}
+              {/*{employees.emp_no}*/}
+            {/*</div>*/}
+          {/*)*/}
+        {/*}*/}
+
       </div>
     )
   }
